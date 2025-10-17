@@ -272,7 +272,7 @@ extern uint32_t FMC_Read(uint32_t u32Addr);
 extern int32_t  FMC_Read_64(uint32_t u32addr, uint32_t * u32data0, uint32_t * u32data1);
 extern uint32_t FMC_ReadDataFlashBaseAddr(void);
 extern void     FMC_SetBootSource(int32_t i32BootSrc);
-extern void     FMC_Write(uint32_t u32Addr, uint32_t u32Data);
+extern int32_t  FMC_Write(uint32_t u32Addr, uint32_t u32Data);
 extern int32_t  FMC_Write8Bytes(uint32_t u32addr, uint32_t u32data0, uint32_t u32data1);
 extern int32_t  FMC_WriteMultiple(uint32_t u32Addr, uint32_t pu32Buf[], uint32_t u32Len);
 extern int32_t  FMC_Write_OTP(uint32_t otp_num, uint32_t low_word, uint32_t high_word);

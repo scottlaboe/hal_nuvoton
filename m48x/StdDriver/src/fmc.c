@@ -264,7 +264,7 @@ int32_t FMC_EraseXOM(uint32_t u32XomNum)
                 u32Addr = (FMC->XOMR3STS & 0xFFFFFF00u) >> 8u;
                 break;
             default:
-                break;
+                return -1;
             }
             FMC->ISPCMD = FMC_ISPCMD_PAGE_ERASE;
             FMC->ISPADDR = u32Addr;
@@ -439,13 +439,25 @@ void FMC_SetBootSource(int32_t i32BootSrc)
   * @param[in]  u32Data The word data to be programmed.
   * @return None
   */
-void FMC_Write(uint32_t u32Addr, uint32_t u32Data)
+int32_t FMC_Write(uint32_t u32Addr, uint32_t u32Data)
 {
+    int32_t i32TimeOutCnt = 0;
+
     FMC->ISPCMD = FMC_ISPCMD_PROGRAM;
     FMC->ISPADDR = u32Addr;
     FMC->ISPDAT = u32Data;
     FMC->ISPTRG = FMC_ISPTRG_ISPGO_Msk;
-    while (FMC->ISPTRG & FMC_ISPTRG_ISPGO_Msk) { }
+    i32TimeOutCnt = SystemCoreClock<<3;
+    while (FMC->ISPTRG & FMC_ISPTRG_ISPGO_Msk) {
+
+        if( i32TimeOutCnt-- <= 0)
+        {
+            return -1;
+        }
+
+    }
+
+    return 0;
 }
 
 /**
