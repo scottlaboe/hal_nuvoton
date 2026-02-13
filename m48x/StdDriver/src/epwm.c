@@ -189,7 +189,7 @@ uint32_t EPWM_ConfigOutputChannel(EPWM_T *epwm, uint32_t u32ChannelNum, uint32_t
 
     u32CNR -= 1U;
     EPWM_SET_CNR(epwm, u32ChannelNum, u32CNR);
-    EPWM_SET_CMR(epwm, u32ChannelNum, u32DutyCycle * (u32CNR + 1U) / 100U);
+    EPWM_SET_CMR(epwm, u32ChannelNum, u32DutyCycle * (u32CNR + 1U) / 10000U);
 
     (epwm)->WGCTL0 = ((epwm)->WGCTL0 & ~(((1UL << EPWM_WGCTL0_PRDPCTL0_Pos) | (1UL << EPWM_WGCTL0_ZPCTL0_Pos)) << (u32ChannelNum << 1U))) | \
                      ((uint32_t)EPWM_OUTPUT_HIGH << ((u32ChannelNum << 1U) + (uint32_t)EPWM_WGCTL0_ZPCTL0_Pos));
