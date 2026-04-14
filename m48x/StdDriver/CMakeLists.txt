@@ -10,6 +10,7 @@ zephyr_library_sources_ifdef(CONFIG_HAS_NUMICRO_GPIO    src/gpio.c)
 
 zephyr_library_sources_ifdef(CONFIG_HAS_NUMAKER_BPWM    src/bpwm.c)
 zephyr_library_sources_ifdef(CONFIG_HAS_NUMAKER_ADC     src/eadc.c)
+zephyr_library_sources_ifdef(CONFIG_HAS_NUMAKER_DAC     src/dac.c)
 zephyr_library_sources_ifdef(CONFIG_HAS_NUMAKER_PWM     src/epwm.c)
 zephyr_library_sources_ifdef(CONFIG_HAS_NUMAKER_FMC     src/fmc.c)
 zephyr_library_sources_ifdef(CONFIG_HAS_NUMAKER_HSUSBD  src/husbd.c)
