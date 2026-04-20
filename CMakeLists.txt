@@ -3,6 +3,7 @@
 # Copyright (c) 2020 Linumiz
 # Author: Saravanan Sekar <saravanan@linumiz.com>
 
+add_subdirectory_ifdef(CONFIG_SOC_SERIES_M45X m45x)
 add_subdirectory_ifdef(CONFIG_SOC_SERIES_M48X m48x)
 add_subdirectory_ifdef(CONFIG_SOC_SERIES_M46X m46x)
 add_subdirectory_ifdef(CONFIG_SOC_SERIES_M2L31X m2l31x)
